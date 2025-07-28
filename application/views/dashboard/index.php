@@ -57,6 +57,52 @@
     </div>
 </div>
 
+<!-- Quick Action Buttons -->
+<div class="content-card">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="mb-0">Quick Actions</h5>
+        <small class="text-muted">Frequently used functions</small>
+    </div>
+    <div class="row g-3">
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <a href="<?php echo site_url('employees/add'); ?>" class="btn btn-outline-primary w-100 h-100 d-flex flex-column align-items-center justify-content-center py-3 text-decoration-none">
+                <i class="fas fa-user-plus fa-2x mb-2"></i>
+                <span class="small">Add Employee</span>
+            </a>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <a href="<?php echo site_url('attendance'); ?>" class="btn btn-outline-success w-100 h-100 d-flex flex-column align-items-center justify-content-center py-3 text-decoration-none">
+                <i class="fas fa-clock fa-2x mb-2"></i>
+                <span class="small">Mark Attendance</span>
+            </a>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <a href="<?php echo site_url('leaves'); ?>" class="btn btn-outline-warning w-100 h-100 d-flex flex-column align-items-center justify-content-center py-3 text-decoration-none">
+                <i class="fas fa-calendar-alt fa-2x mb-2"></i>
+                <span class="small">Apply Leave</span>
+            </a>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <a href="<?php echo site_url('salary'); ?>" class="btn btn-outline-info w-100 h-100 d-flex flex-column align-items-center justify-content-center py-3 text-decoration-none">
+                <i class="fas fa-money-bill-wave fa-2x mb-2"></i>
+                <span class="small">Generate Payroll</span>
+            </a>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <a href="<?php echo site_url('reports'); ?>" class="btn btn-outline-secondary w-100 h-100 d-flex flex-column align-items-center justify-content-center py-3 text-decoration-none">
+                <i class="fas fa-chart-bar fa-2x mb-2"></i>
+                <span class="small">View Reports</span>
+            </a>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <a href="<?php echo site_url('settings'); ?>" class="btn btn-outline-dark w-100 h-100 d-flex flex-column align-items-center justify-content-center py-3 text-decoration-none">
+                <i class="fas fa-cog fa-2x mb-2"></i>
+                <span class="small">Settings</span>
+            </a>
+        </div>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-lg-8 mb-4">
         <div class="content-card">
