@@ -86,6 +86,7 @@
 
         .menu-item {
             margin-bottom: 0.5rem;
+            position: relative;
         }
 
         .menu-link {
@@ -124,6 +125,7 @@
             text-align: center;
             margin-right: 1rem;
             transition: all 0.3s ease;
+            font-size: 1.1rem;
         }
 
         .menu-text {
@@ -133,14 +135,54 @@
 
         .sidebar.collapsed .menu-text {
             opacity: 0;
+            visibility: hidden;
         }
 
         .sidebar.collapsed .menu-link {
             justify-content: center;
+            padding: 0.75rem;
+            margin: 0 0.5rem;
+            border-radius: 8px;
         }
 
         .sidebar.collapsed .menu-icon {
             margin-right: 0;
+            font-size: 1.2rem;
+        }
+
+        /* Tooltip for collapsed sidebar */
+        .sidebar.collapsed .menu-item {
+            position: relative;
+        }
+
+        .sidebar.collapsed .menu-link:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            margin-left: 15px;
+            padding: 8px 12px;
+            background: #333;
+            color: white;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            z-index: 1001;
+            opacity: 1;
+            pointer-events: none;
+        }
+
+        .sidebar.collapsed .menu-link:hover::before {
+            content: '';
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            margin-left: 9px;
+            border: 6px solid transparent;
+            border-right-color: #333;
+            z-index: 1001;
         }
 
         /* Top Header */
@@ -328,63 +370,63 @@
         
         <nav class="sidebar-menu">
             <div class="menu-item">
-                <a href="<?php echo site_url('dashboard'); ?>" class="menu-link <?php echo ($this->uri->segment(1) == 'dashboard' || $this->uri->segment(1) == '') ? 'active' : ''; ?>">
+                <a href="<?php echo site_url('dashboard'); ?>" class="menu-link <?php echo ($this->uri->segment(1) == 'dashboard' || $this->uri->segment(1) == '') ? 'active' : ''; ?>" data-tooltip="Dashboard">
                     <i class="fas fa-tachometer-alt menu-icon"></i>
                     <span class="menu-text">Dashboard</span>
                 </a>
             </div>
             
             <div class="menu-item">
-                <a href="<?php echo site_url('employees'); ?>" class="menu-link <?php echo ($this->uri->segment(1) == 'employees') ? 'active' : ''; ?>">
+                <a href="<?php echo site_url('employees'); ?>" class="menu-link <?php echo ($this->uri->segment(1) == 'employees') ? 'active' : ''; ?>" data-tooltip="Employees">
                     <i class="fas fa-users menu-icon"></i>
                     <span class="menu-text">Employees</span>
                 </a>
             </div>
             
             <div class="menu-item">
-                <a href="<?php echo site_url('departments'); ?>" class="menu-link <?php echo ($this->uri->segment(1) == 'departments') ? 'active' : ''; ?>">
+                <a href="<?php echo site_url('departments'); ?>" class="menu-link <?php echo ($this->uri->segment(1) == 'departments') ? 'active' : ''; ?>" data-tooltip="Departments">
                     <i class="fas fa-building menu-icon"></i>
                     <span class="menu-text">Departments</span>
                 </a>
             </div>
             
             <div class="menu-item">
-                <a href="<?php echo site_url('designations'); ?>" class="menu-link <?php echo ($this->uri->segment(1) == 'designations') ? 'active' : ''; ?>">
+                <a href="<?php echo site_url('designations'); ?>" class="menu-link <?php echo ($this->uri->segment(1) == 'designations') ? 'active' : ''; ?>" data-tooltip="Designations">
                     <i class="fas fa-briefcase menu-icon"></i>
                     <span class="menu-text">Designations</span>
                 </a>
             </div>
             
             <div class="menu-item">
-                <a href="<?php echo site_url('attendance'); ?>" class="menu-link <?php echo ($this->uri->segment(1) == 'attendance') ? 'active' : ''; ?>">
+                <a href="<?php echo site_url('attendance'); ?>" class="menu-link <?php echo ($this->uri->segment(1) == 'attendance') ? 'active' : ''; ?>" data-tooltip="Attendance">
                     <i class="fas fa-clock menu-icon"></i>
                     <span class="menu-text">Attendance</span>
                 </a>
             </div>
             
             <div class="menu-item">
-                <a href="<?php echo site_url('leaves'); ?>" class="menu-link <?php echo ($this->uri->segment(1) == 'leaves') ? 'active' : ''; ?>">
+                <a href="<?php echo site_url('leaves'); ?>" class="menu-link <?php echo ($this->uri->segment(1) == 'leaves') ? 'active' : ''; ?>" data-tooltip="Leave Management">
                     <i class="fas fa-calendar-alt menu-icon"></i>
                     <span class="menu-text">Leave Management</span>
                 </a>
             </div>
             
             <div class="menu-item">
-                <a href="<?php echo site_url('salary'); ?>" class="menu-link <?php echo ($this->uri->segment(1) == 'salary') ? 'active' : ''; ?>">
+                <a href="<?php echo site_url('salary'); ?>" class="menu-link <?php echo ($this->uri->segment(1) == 'salary') ? 'active' : ''; ?>" data-tooltip="Salary">
                     <i class="fas fa-money-bill-wave menu-icon"></i>
                     <span class="menu-text">Salary</span>
                 </a>
             </div>
             
             <div class="menu-item">
-                <a href="<?php echo site_url('reports'); ?>" class="menu-link <?php echo ($this->uri->segment(1) == 'reports') ? 'active' : ''; ?>">
+                <a href="<?php echo site_url('reports'); ?>" class="menu-link <?php echo ($this->uri->segment(1) == 'reports') ? 'active' : ''; ?>" data-tooltip="Reports">
                     <i class="fas fa-chart-bar menu-icon"></i>
                     <span class="menu-text">Reports</span>
                 </a>
             </div>
             
             <div class="menu-item">
-                <a href="<?php echo site_url('settings'); ?>" class="menu-link <?php echo ($this->uri->segment(1) == 'settings') ? 'active' : ''; ?>">
+                <a href="<?php echo site_url('settings'); ?>" class="menu-link <?php echo ($this->uri->segment(1) == 'settings') ? 'active' : ''; ?>" data-tooltip="Settings">
                     <i class="fas fa-cog menu-icon"></i>
                     <span class="menu-text">Settings</span>
                 </a>
