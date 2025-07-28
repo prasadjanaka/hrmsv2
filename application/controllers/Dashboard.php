@@ -1,13 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
+class Dashboard extends MY_Controller {
     public function __construct() {
         parent::__construct();
-        // Require user to be logged in
-        if (!$this->session->userdata('logged_in')) {
-            redirect('login');
-        }
         $this->load->model('Dashboard_model');
     }
 
