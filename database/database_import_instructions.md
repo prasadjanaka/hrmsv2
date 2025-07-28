@@ -39,7 +39,7 @@ mysql -u root -p hrms_db < database/hrms_schema.sql
 
 After importing the schema, you can login with:
 - **Username**: admin
-- **Password**: admin123
+- **Password**: password
 - **Role**: Administrator
 
 ## Verify Installation
@@ -67,7 +67,7 @@ You should see these tables:
 ### Test Login
 1. Navigate to your HRMS URL: http://localhost/hrms/
 2. You should see the login page
-3. Login with admin/admin123
+3. Login with admin/password
 
 ## Database Configuration
 
