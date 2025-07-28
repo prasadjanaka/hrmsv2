@@ -77,6 +77,7 @@
 
         .sidebar.collapsed .brand-text {
             opacity: 0;
+            display: none;
         }
 
         /* Sidebar Menu */
@@ -121,7 +122,11 @@
         }
 
         .menu-icon {
-            width: 20px;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
             margin-right: 1rem;
             transition: all 0.3s ease;
@@ -134,20 +139,31 @@
         }
 
         .sidebar.collapsed .menu-text {
-            opacity: 0;
-            visibility: hidden;
+            display: none;
         }
 
         .sidebar.collapsed .menu-link {
-            justify-content: center;
-            padding: 0.75rem;
-            margin: 0 0.5rem;
-            border-radius: 8px;
+            justify-content: center !important;
+            padding: 1rem 0;
+            margin: 0.2rem 0.8rem;
+            border-radius: 10px;
+            text-align: center;
         }
 
         .sidebar.collapsed .menu-icon {
-            margin-right: 0;
-            font-size: 1.2rem;
+            margin-right: 0 !important;
+            font-size: 1.3rem;
+            width: auto;
+            height: auto;
+        }
+
+        .sidebar.collapsed .menu-link.active::before {
+            display: none;
+        }
+
+        .sidebar.collapsed .menu-link.active {
+            background: rgba(255,255,255,0.2);
+            color: white;
         }
 
         /* Tooltip for collapsed sidebar */
