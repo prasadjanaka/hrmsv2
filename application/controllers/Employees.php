@@ -8,6 +8,12 @@ class Employees extends MY_Controller {
         $this->load->model('Employee_model');
         $this->load->library(['form_validation', 'upload']);
         $this->require_auth = true; // ensure authentication
+        
+        // Role-based access control
+        $method = $this->router->fetch_method();
+        if (in_array($method, ['add', 'edit', 'delete'])) {
+            $this->allowed_roles = array('admin', 'hr'); // Only admin and HR can modify employees
+        }
     }
 
     /* ------------------ List ------------------ */
