@@ -2,9 +2,15 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User_model extends CI_Model {
+
+    private $table = 'employees';
+
     public function __construct() {
         parent::__construct();
     }
+
+
+
 
     public function authenticate($username, $password) {
         $this->db->where('username', $username);
@@ -21,4 +27,5 @@ class User_model extends CI_Model {
         $this->db->where('id', $user_id);
         return $this->db->update('users', array('password' => $hash));
     }
+
 }
