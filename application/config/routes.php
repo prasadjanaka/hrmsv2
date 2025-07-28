@@ -56,6 +56,10 @@ $route['logout'] = 'auth/logout';
 $route['reset_password'] = 'auth/reset_password';
 $route['dashboard'] = 'dashboard';
 $route['change_password'] = 'auth/change_password';
+$route['employees'] = 'employees';
+$route['employees/add'] = 'employees/add';
+$route['employees/edit/(:num)'] = 'employees/edit/$1';
+$route['employees/delete/(:num)'] = 'employees/delete/$1';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
