@@ -24,4 +24,49 @@ class Dashboard_model extends CI_Model {
         $stats['on_leave_today'] = $this->db->count_all_results('leaves');
         return $stats;
     }
+
+    public function get_attendance_trend($days = 7) {
+        $start_date = date('Y-m-d', strtotime('-'.($days-1).' days'));
+        $this->db->select('date, COUNT(*) as cnt');
+        $this->db->from('attendances');
+        $this->db->where('status', 'present');
+        $this->db->where('date >=', $start_date);
+        $this->db->group_by('date');
+        $query = $this->db->get();
+        $result = $query->result();
+
+        // Build array with all dates to ensure zeros
+        $trend = [];
+        for ($i = $days-1; $i >= 0; $i--) {
+            $d = date('Y-m-d', strtotime('-'.$i.' days'));
+            $trend[$d] = 0;
+        }
+        foreach ($result as $row) {
+            $trend[$row->date] = (int)$row->cnt;
+        }
+        return $trend; // associative array date => count
+    }
+
+    public function get_department_distribution() {
+        $this->db->select('departments.name as department, COUNT(employees.id) as cnt');
+        $this->db->from('departments');
+        $this->db->join('employees', 'employees.department_id = departments.id', 'left');
+        $this->db->group_by('departments.id');
+        $query = $this->db->get();
+        $data = [];
+        foreach ($query->result() as $row) {
+            $data[$row->department] = (int)$row->cnt;
+        }
+        return $data; // associative array department => count
+    }
+
+    public function get_recent_activities($limit = 5) {
+        // For demo: last attendance entries
+        $this->db->select('attendances.*, employees.first_name, employees.last_name');
+        $this->db->from('attendances');
+        $this->db->join('employees', 'employees.id = attendances.employee_id', 'left');
+        $this->db->order_by('attendances.created_at', 'DESC');
+        $this->db->limit($limit);
+        return $this->db->get()->result();
+    }
 }
